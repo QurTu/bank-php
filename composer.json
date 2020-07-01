@@ -1,0 +1,15 @@
+{
+    "name": "goku/bank",
+    "autoload": {
+        "psr-4": {
+            
+        }
+    },
+    "authors": [
+        {
+            "name": "QurTu",
+            "email": "martis55@inbox.lt"
+        }
+    ],
+    "require": {}
+}
