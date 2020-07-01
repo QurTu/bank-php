@@ -2,7 +2,8 @@
     "name": "goku/bank",
     "autoload": {
         "psr-4": {
-            
+            "Main\\": "app" ,
+            "App\\DB\\" : "app/Db"
         }
     },
     "authors": [
