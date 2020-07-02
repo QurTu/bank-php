@@ -25,18 +25,13 @@
             }
         }
         elseif( self::$params[0] == 'addFunds') { 
-
+            echo 'add funds';
         }
-        elseif( self::$params[0] == 'addFunds') { 
-
+        elseif( self::$params[0] == 'takeFunds') { 
+            echo 'take funds';
         }
         else {
-            $AccList = new DataBase();
-            $list =  $AccList->showAll();
-            echo '<h2> List of accounts: </h2>';
-            foreach ($list as $user){
-                echo '<h5>' . $user['Name'] . '</h5>';
-            }
+            require(self::VIEW_DIR . 'accList.php');
         }
 
 
