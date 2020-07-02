@@ -1,11 +1,26 @@
 <?php
 namespace App\DB;
+
+
  
 class DataBase implements db 
-{
-   public function create(array $userData) : void {
 
-   }
+{
+  private $data;
+
+  public function __construct()
+  {
+
+      if (!file_exists('./../app/Db/data.json')) {
+          file_put_contents('./../app/Db/data.json', json_encode([]));
+      }
+      $this->data = json_decode(file_get_contents('./../app/Db/data.json'), 1);
+  }
+
+   public function create(array $userData) : void {
+          $this->data[] = $userData;
+          file_put_contents('./../app/Db/data.json', json_encode($this->data));
+        }
  
   public  function update(string $userId, array $userData) : void {
 
@@ -20,6 +35,7 @@ class DataBase implements db
  }
     
  public   function showAll() : array {
+   return $this->data;
+   }
 
  }
-}
