@@ -14,10 +14,12 @@ class DataBase implements db
       if (!file_exists('./../app/Db/data.json')) {
           file_put_contents('./../app/Db/data.json', json_encode([]));
       }
+  
       $this->data = json_decode(file_get_contents('./../app/Db/data.json'), 1);
   }
 
    public function create(array $userData) : void {
+          $userData['balance'] = '0';
           $this->data[] = $userData;
           file_put_contents('./../app/Db/data.json', json_encode($this->data));
         }
@@ -35,7 +37,11 @@ class DataBase implements db
  }
     
  public   function showAll() : array {
-   return $this->data;
+   if (empty($this->data)) {
+    return [];
+   } else{
+     return $this->data;
+   }
    }
 
  }
