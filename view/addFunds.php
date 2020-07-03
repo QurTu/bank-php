@@ -11,7 +11,7 @@ if (!empty($list) ) {
 foreach ($list as  $key => $user){
     echo  $user['Name'] . ' ' .  $user['Lastname'] .  ' ' . $user['iban'] .  ' ' . $user['balance']  ;
     echo   "<form action='$URL' method='post'>   
-    <input type='text' name='value'>
+    <input type='number' name='value'>
     <button type='submit' name='id' value='$key' >ADD funds</button>
     </form> ";
     

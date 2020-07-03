@@ -27,7 +27,8 @@ class DataBase implements db
         }
  
   public  function update(string $userId, array $userData) : void {
-
+    $this->data[$userId] = $userData;
+    file_put_contents('./../app/Db/data.json', json_encode($this->data));
   }
  
    public function delete(string $userId) : void{
@@ -41,6 +42,11 @@ class DataBase implements db
  }
  
    public function show(string $userId) : array{
+    foreach( $this->data as $id => $user) {
+      if( $id == $userId) { 
+        return $user;
+      }
+     }
 
  }
     
