@@ -12,5 +12,7 @@
             "email": "martis55@inbox.lt"
         }
     ],
-    "require": {}
+    "require": {
+        "ramsey/uuid": "^4.0"
+    }
 }

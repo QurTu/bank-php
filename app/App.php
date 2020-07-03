@@ -25,13 +25,18 @@
             }
         }
         elseif( self::$params[0] == 'addFunds') { 
-            echo 'add funds';
+            require(self::VIEW_DIR . 'addFunds.php');
         }
         elseif( self::$params[0] == 'takeFunds') { 
-            echo 'take funds';
+            require(self::VIEW_DIR . 'takeFunds.php');
         }
         else {
             require(self::VIEW_DIR . 'accList.php');
+            if(!empty($_POST)) {
+                $deleteAcc = new DataBase();
+                $deleteAcc->delete($_POST['delete']);
+                header("Refresh:0");
+            }
         }
 
 
