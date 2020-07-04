@@ -22,7 +22,7 @@
             if(!empty($_POST)) {
                 $addAcc = new DataBase();
                 $addAcc->create($_POST);
-                echo 'acc added';
+                
             }
         }
         elseif( self::$params[0] == 'addFunds') { 
