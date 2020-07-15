@@ -26,7 +26,6 @@
 
         if( self::$params[0] == 'login') {
             if ($_SESSION['login'] == 0) {
-            echo ' <br> <br> <br> To access website you need to login <br>';
             require(self::VIEW_DIR . 'login.php');
             if(!empty($_SESSION['note'])) {
                 echo $_SESSION['note'];
