@@ -1,5 +1,6 @@
 <?php
   namespace Main;
+  use  App\DB\MySQL;
 
  use App\DB\DataBase;
  
@@ -35,14 +36,21 @@
     }
     public static function delete($id) {
         $dataBase = new DataBase();
+        
+
         $user =  $dataBase->show($id);
-      if( $user['balance'] == 0) {
+      if( $user['balance'] == 0) {  // reikes SQL atnaujinimo
           $dataBase->delete($id) ;
           $_SESSION['note'] = " <br> <br> Account succesfuly deleted";
       }
       else {
         $_SESSION['note'] = "Cant delete. To delete balanse has to be 0 <br>";
       }
+      
+      $sql = new MySQL();
+      $user = $sql->show($id);
+      print_r($user);
+
       }
     
  }

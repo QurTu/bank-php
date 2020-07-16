@@ -1,7 +1,7 @@
 <?php
 namespace Main;
 
-
+use  App\DB\MySQL;
  use App\DB\DataBase;
  
 class DataValidation {
@@ -34,6 +34,8 @@ class DataValidation {
          $errors++;
         }
         if ($errors  < 1 ) {
+            $sql = new MySQL();
+            $sql->create($userData);
             $list->create($userData);
             self::$message = 'account added';
          }
