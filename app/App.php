@@ -4,6 +4,7 @@
  use Main\DataValidation;
  use App\DB\DataBase;
  use Main\Login;
+ use  App\DB\MySQL;
  class App{
      const DIR = '/bank/public/';
      public static $params = [];
@@ -103,6 +104,7 @@
                require(self::VIEW_DIR . 'accList.php');
                die();
             }
+            $sql = new MySQL();
             require(self::VIEW_DIR . 'accList.php');
 
 
