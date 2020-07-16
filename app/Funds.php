@@ -14,6 +14,7 @@
         $old['balance'] =  floatval( $old['balance']) +floatval($add);
         $data->update($id, $old);
         $_SESSION['note'] = "funds  succesfuly added";
+        echo  $_SESSION['note'];
         }
         else {
         $_SESSION['note'] = "can't add less ten 0";

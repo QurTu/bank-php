@@ -15,15 +15,14 @@
         $param = str_replace(self::DIR, '', $_SERVER['REQUEST_URI']);
         self::$params = explode('/', $param);
 
-        
-        
+     
+        // login and logout
         if(empty($_SESSION['login'])) {
             $_SESSION['login'] = 0;
         }
         if(isset($_POST['logout'])) {
             $_SESSION['login'] = 0;
         }
-
         if( self::$params[0] == 'login') {
             if ($_SESSION['login'] == 0) {
             require(self::VIEW_DIR . 'login.php');
@@ -49,10 +48,16 @@
         if($_SESSION['login'] ==  0) {
             header('Location: http://localhost/bank/public/login');
             die();
-
         }
         
+
+
         require(self::VIEW_DIR . 'navBar.php');
+        if(!empty($_SESSION['note'])) {
+            echo 'works';
+            echo $_SESSION['note'];
+            unset($_SESSION['note']);
+        }
         // add Acc
         if( self::$params[0] == 'addAcc') {
             require(self::VIEW_DIR . 'addForm.php');
@@ -63,42 +68,42 @@
         }
         // add FUnDS
         if( self::$params[0] == 'addFunds') { 
-            require(self::VIEW_DIR . 'addFunds.php');
             if(!empty($_SESSION['note'])) {
                 echo $_SESSION['note'];
                 unset($_SESSION['note']);
             }
             if(!empty($_POST)) {
-                Funds::add($_POST['id'], $_POST['value']) ;
-                header("Refresh:0"); 
+                Funds::add($_POST['id'], $_POST['value']) ; 
              }
+             require(self::VIEW_DIR . 'addFunds.php');
              die();
         }
         //Take Funds
         if( self::$params[0] == 'takeFunds') { 
-            require(self::VIEW_DIR . 'takeFunds.php');
             if(!empty($_SESSION['note'])) {
+                echo 'works';
                 echo $_SESSION['note'];
                 unset($_SESSION['note']);
             }
             if(!empty($_POST)) {
                 Funds::take($_POST['id'], $_POST['value']) ;
-                header("Refresh:0");
              }
+             require(self::VIEW_DIR . 'takeFunds.php');
+             $_SESSION['notes'] = 'eik sikt';
              die();
         }
 
-            require(self::VIEW_DIR . 'accList.php');
+            
             if(!empty($_SESSION['note'])) {
                 echo $_SESSION['note'];
                 unset($_SESSION['note']);
             }
             if(!empty($_POST)) {
                Funds::delete($_POST['delete']);
-               header("Refresh:0");
-               
+               require(self::VIEW_DIR . 'accList.php');
+               die();
             }
-        
+            require(self::VIEW_DIR . 'accList.php');
 
 
     }
